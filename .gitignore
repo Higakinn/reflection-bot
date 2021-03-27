@@ -102,3 +102,7 @@ dist
 
 # TernJS port file
 .tern-port
+
+# Google app script file
+.clasp.json
+.clasprc.json
