@@ -1,0 +1,10 @@
+version: '2'
+services:
+  reflection:
+    build: .
+    tty: true
+    volumes:
+      - ./src/:/root
+    # 認証用port
+    ports:
+      - 42157:42157
