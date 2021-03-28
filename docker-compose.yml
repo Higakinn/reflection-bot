@@ -6,5 +6,5 @@ services:
     volumes:
       - ./src/:/root
     # 認証用port
-    ports:
-      - 42157:42157
+    env_file:
+      - .env

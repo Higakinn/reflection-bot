@@ -1,6 +1,6 @@
 // LINE developersのメッセージ送受信設定に記載のアクセストークン
-var ACCESS_TOKEN = '**';
-var USER_ID = '**'
+var ACCESS_TOKEN = '__ACCESS_TOKEN__';
+var USER_ID = '__USER_ID__'
 
 function doPost(e) {
     var replyToken = JSON.parse(e.postData.contents).events[0].replyToken;
@@ -93,7 +93,7 @@ function addSpreadSheet(cache) {
         // 日付, 良かった点, 悪かった点
         [date, cache.get("good_message"),cache.get("bad_message")]
     ]
-    var SHEET_ID = '**'
+    var SHEET_ID = '__SHEET_ID__'
     var spreadSheet = SpreadsheetApp.openById(SHEET_ID);
     var sheet = spreadSheet.getSheets()[0];
     // そのシート上の値が存在するセル範囲を取得
