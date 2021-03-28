@@ -5,6 +5,3 @@ services:
     tty: true
     volumes:
       - ./src/:/root
-    # 認証用port
-    env_file:
-      - .env
