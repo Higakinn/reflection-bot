@@ -49,13 +49,20 @@ function doPost(e) {
         case "2":
             // 悪かった点
             cache.put("type", 3);
-            const badMessage = `悪かった点は\n${userMessage}\nですね？`
+            const badMessage = `悪かった点は\n${userMessage}\nですね？\n次に良かった点、改善点を踏まえて次に何をすべきかを入力してください。`
             // 悪かった点をキャッシュしておく 　
             cache.put("bad_message",userMessage)
             reply(replyToken, badMessage);
             break;
-  
         case "3":
+          // つぎやること
+          cache.put("type", 4);
+          const tryMessage = `次に何をすべきかの点は\n${userMessage}\nですね？。`
+          // 悪かった点をキャッシュしておく 　
+          cache.put("try_message",userMessage)
+          reply(replyToken, tryMessage);
+          break;
+        case "4":
           //TODO: はい、いいえが記述されたカードテンプレーとを送信するようにしたい。
           // 最終確認
           cache.remove("type");
@@ -98,7 +105,7 @@ function addSpreadSheet(cache) {
     var date = new Date();
     const message = [
         // 日付, 良かった点, 悪かった点
-        [date, cache.get("good_message"),cache.get("bad_message")]
+        [date, cache.get("good_message"),cache.get("bad_message"),cache.get("try_message")]
     ]
     var SHEET_ID = '__SHEET_ID__'
     var spreadSheet = SpreadsheetApp.openById(SHEET_ID);
@@ -111,7 +118,7 @@ function addSpreadSheet(cache) {
     const row = values.length + 1
     const column = 1
     const numRows = 1
-    const numColumns = 3
+    const numColumns = 4
     sheet.getRange(row, column, numRows, numColumns).setValues(message);
 }
 
