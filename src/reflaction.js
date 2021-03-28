@@ -11,13 +11,20 @@ function doPost(e) {
     var userMessage = JSON.parse(e.postData.contents).events[0].message.text;
     var cache = CacheService.getScriptCache();
     var type = cache.get("type");
-  
+    var helpMessage = `まず、今回のプロジェクトでも、今週の業務でも振り返る対象を決めてください。
+    よかった点、改善点と思う事を挙げ出していきます。\n
+    この際、当初の計画があれば、それと比較して、結果がどうだったか、なぜその結果となったかを考えると、自ずと良し悪しが見えます。
+    その次に、良かった点、改善点を踏まえて次に何をすべきを考えます。\n
+    よかった点を、よりよくするためには何ができるか？あるいは、継続する仕組み、仕掛けが構築できないか？自身だけでやっていたことをチームに拡張できないか？見てみてください。
+    改善点に対しては、どうすれば改善できるか？何が原因でうまくいかなかったか、それを解消するための仕組みや仕掛けが構築できないか？チームとしての仕掛けで解消できないか？見てみてください。
+    ちなみに、自身の成長のためには、改善点を潰していくというProblemとTryに集中してしまうかもしれませんが、モチベーションの維持や、自分の強みをさらに強化させて尖らせていくという意味では、Keepも確り上げ出しましょう。\n
+    逆に、どちらかしか出ていないというのは、まだ挙げ出す余地があると思って良いでしょう。\nKPTは、「計画に対して、良かった点、悪かった点を挙げ出して、次の行動に活かす」という一連の流れを踏んでいます。`
     if (type === null) {
       if (userMessage === "良かった点") {
         cache.put("type", 1);
         reply(replyToken, "今日の良かった点を教えてください");
-      } else if (userMessage === "悪かった点") {
-        reply(replyToken, "今日の悪かった点を教えてください");
+      } else if (userMessage === "ヘルプ") {
+        reply(replyToken, helpMessage);
         cache.put("type", 2);
       } else {
         reply(replyToken, "リッチメニュー");
