@@ -49,6 +49,7 @@ function doPost(e) {
             break;
   
         case "3":
+          //TODO: はい、いいえが記述されたカードテンプレーとを送信するようにしたい。
           // 最終確認
           cache.remove("type");
           if (userMessage === "はい") {
