@@ -5,6 +5,7 @@ on: push
 
 env:
   CLASPRC_JSON: ${{ secrets.CLASPRC_JSON }}
+  CLASP_JSON: ${{ secrets.CLASP_JSON }}
   BOT_ENV: ${{ secrets.BOT_ENV }}
   LINE_ACCESS_TOKEN: ${{ secrets.LINE_ACCESS_TOKEN }}
   USER_ID: ${{ secrets.USER_ID }}
@@ -24,5 +25,6 @@ jobs:
                 -e "s|__USER_ID__|${USER_ID}|g"
                 -e "s|__SHEET_ID__|${SHEET_ID}|g" src/reflaction.js  > src/reflaction.js &&
             echo -n "${CLASPRC_JSON}" | base64 -d > src/.clasprc.json &&
+            echo -n "${CLASP_JSON}" | base64 -d > src/.clasp.json &&
             docker-compose up -d &&
             docker-compose exec -T reflection clasp push
