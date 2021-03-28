@@ -21,10 +21,10 @@ jobs:
         ref: ${{ github.ref }}
     - name: deploy google app script with clasp  
       run:  echo "deploy google app script with clasp" &&
-            mv src/reflaction.js src/backup.js &&
+            mv src/reflaction.js src/backup &&
             sed -e "s|__ACCESS_TOKEN__|${LINE_ACCESS_TOKEN}|g"
                 -e "s|__USER_ID__|${USER_ID}|g"
-                -e "s|__SHEET_ID__|${SHEET_ID}|g" src/backup.js  > src/reflaction.js &&
+                -e "s|__SHEET_ID__|${SHEET_ID}|g" src/backup  > src/reflaction.js &&
             echo -n "${CLASPRC_JSON}" | base64 -d > src/.clasprc.json &&
             echo -n "${CLASP_JSON}" | base64 -d > src/.clasp.json &&
             docker-compose up -d &&
