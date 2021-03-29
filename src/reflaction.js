@@ -141,7 +141,7 @@ function push(text) {
       var pushMessages = [
         {
           "type": "template",
-          "altText": "今日のリフレクションを行ってください。\nhttps://liff.line.me/1655805037-4r2doKn1",
+          "altText": "今日のリフレクションを行ってください。\n__LIFF_URL__",
           "template": {
               "type": "buttons",
               "thumbnailImageUrl": "https://example.com/bot/images/image.jpg",
@@ -153,20 +153,20 @@ function push(text) {
               "defaultAction": {
                   "type": "uri",
                   "label": "View detail",
-                  "uri": "https://liff.line.me/1655805037-4r2doKn1"
+                  "uri": "__LIFF_URL__"
               },
               "actions": [
                   {
                     "type": "uri",
                     "label": "リフレクション開始",
-                    "uri": "https://liff.line.me/1655805037-4r2doKn1"
+                    "uri": "__LIFF_URL__"
                   }
               ]
           }
         },
         {
           'type':'text',
-          'text':"https://liff.line.me/1655805037-4r2doKn1",
+          'text':"__LIFF_URL__",
         }]
       //toのところにメッセージを送信したいユーザーのIDを指定します。(toは最初の方で自分のIDを指定したので、linebotから自分に送信されることになります。)
       //textの部分は、送信されるメッセージが入ります。createMessageという関数で定義したメッセージがここに入ります。
