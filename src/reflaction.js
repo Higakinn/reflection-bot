@@ -182,7 +182,7 @@ function push(text) {
       
       var postData = {
         "to" : USER_ID,
-        "messages" : buttonTemplate
+        "messages" : pushMessages
       };
     
       var options = {
