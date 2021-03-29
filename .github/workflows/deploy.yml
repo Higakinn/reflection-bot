@@ -10,6 +10,7 @@ env:
   LINE_ACCESS_TOKEN: ${{ secrets.LINE_ACCESS_TOKEN }}
   USER_ID: ${{ secrets.USER_ID }}
   SHEET_ID: ${{ secrets.SHEET_ID }}
+  LIFF_URL: ${{ secrets.LIFF_URL }}
 
 jobs:
   build:
@@ -24,7 +25,8 @@ jobs:
             mv src/reflaction.js src/backup &&
             sed -e "s|__ACCESS_TOKEN__|${LINE_ACCESS_TOKEN}|g"
                 -e "s|__USER_ID__|${USER_ID}|g"
-                -e "s|__SHEET_ID__|${SHEET_ID}|g" src/backup  > src/reflaction.js &&
+                -e "s|__SHEET_ID__|${SHEET_ID}|g"
+                -e "s|__LIFF_URL__|${LIFF_URL}|g" src/backup  > src/reflaction.js &&
             echo -n "${CLASPRC_JSON}" | base64 -d > src/.clasprc.json &&
             echo -n "${CLASP_JSON}" | base64 -d > src/.clasp.json &&
             docker-compose up -d &&
