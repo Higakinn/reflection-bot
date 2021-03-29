@@ -138,7 +138,7 @@ function push(text) {
         "Content-Type" : "application/json; charset=UTF-8",
         'Authorization': 'Bearer ' + ACCESS_TOKEN,
       };
-      var buttonTemplate = [
+      var pushMessages = [
         {
           "type": "template",
           "altText": "今日のリフレクションを行ってください。\nhttps://liff.line.me/1655805037-4r2doKn1",
@@ -163,7 +163,11 @@ function push(text) {
                   }
               ]
           }
-        } ]
+        },
+        {
+          'type':'text',
+          'text':"https://liff.line.me/1655805037-4r2doKn1",
+        }]
       //toのところにメッセージを送信したいユーザーのIDを指定します。(toは最初の方で自分のIDを指定したので、linebotから自分に送信されることになります。)
       //textの部分は、送信されるメッセージが入ります。createMessageという関数で定義したメッセージがここに入ります。
       // var postData = {
